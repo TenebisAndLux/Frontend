@@ -1,0 +1,111 @@
+<!DOCTYPE html> 
+<html lang="ru"> 
+<head> 
+<meta charset="UTF-8"> 
+<meta http-equiv="X-UA-Compatible" content="IE=edge"> 
+<meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+<title>Океан</title> 
+<link rel="stylesheet" href="./styles.css"> 
+</head> 
+<body> 
+ 
+<header> 
+    <h1>Сайт о природе - Океаны</h1> 
+</header> 
+ 
+<nav>
+    <a href="javascript:confirmRedirect('NeaturalMain.html')">Главная</a>
+</nav>
+
+<section>
+    <h2>Океаны</h2>
+    <p>Площадь поверхности Земли составляет примерно 510 млн км<sup>2</sup> (примем её за 100%). Площадь Мирового океана составляет примерно 361 млн км<sup>2</sup>, или 70,8% земной поверхности, или 2/3 поверхности. Следовательно, Мировой океан — это планетарный географический объект.</p>
+    <img src="O1.jpg" alt="Океан"  width="1200" height="640"
+    title="Океанчик">
+
+    <h3>Мировой океан</h3>
+    <div class="border_element">
+        <p>
+            <span style="color:  #017b92;"><strong>Мировой океан</strong></span> (или просто <span style="color: #017b92;"><strong>Океан</strong></span>) — это главная часть гидросферы. Мировой океан объединяет в себе воды всех океанов Земли.
+        </p>
+    </div>
+
+    <p>Известно, что наша планета Земля обладает уникальной формой. Это фигура, близкая к шару, но немного сплюснутая у полюсов, получила название геоид. Поверхность геоида определяется по водной поверхности Мирового океана.</p>
+    <p>Средняя глубина Мирового океана 3800 м, самая глубокая Марианская впадина — 10 994 м.</p>
+    <p>Обширные части Мирового океана, расположенные между отдельными материками, называются океанами. Каждый океан имеет характерное строение и рельеф дна, самостоятельную систему течений и ветров.</p>
+    
+    <h4>Море</h4>
+    <div class="border_element">
+        <p>
+            <span style="color: #017b92;"><strong>Море</strong></span> — это часть океана, отличающаяся особенностями географического положения, а также возможными особенностями рельефа дна, свойствами воды, климатическими условиями, особенностями растительного и животного мира.
+        </p>
+    </div>
+    
+    <p>Относительно небольшие, вдающиеся в сушу части морей или океанов называются <strong>заливами</strong>. В то же время название «залив» закрепилось за некоторыми большими по площади акваториями океана, которые правильнее было бы называть морями, закрепилось название залив, Бенгальский и Бискайский заливы у берегов Евразии.</p>
+
+    <div class="info_element">
+        <div class="info_header">ИТОГИ</div>
+            <div class="info_content">
+                <ul>
+                    <li><div>Площадь Мирового океана составляет примерно 361 млн км², или 70,8% земной поверхности. <strong>Мировой океан</strong> объединяет в себе воды всех океанов Земли и составляет главную часть гидросферы.</div></li>
+                    <li><div>Средняя глубина Мирового океана — 3800 м, самая глубокая Марианская впадина — 10 994 м.</div></li>
+                    <li><div>Обширные части Мирового океана, расположенные между отдельными материками, называются <strong>океанами</strong>.</div></li>
+                    <li><div>Отдельные части океанов, отличающиеся особенностями географического положения, а также возможными особенностями рельефа дна, свойствами воды, климатическими условиями, особенностями растительного и животного мира, называются <strong>морями</strong>.</div></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>
+</head>
+<body> 
+
+    <script>
+        const urlParams = new URLSearchParams(window.location.search);
+        const category = urlParams.get('category');
+      
+        function displayFishCategory(category) {
+          let categoryContent = '';
+          if (category === 'freshwater') {
+            categoryContent = 'Здесь показаны пресноводные виды рыб.';
+          } else if (category === 'saltwater') {
+            categoryContent = 'Здесь показаны морские виды рыб.';
+          } else {
+            categoryContent = 'Неизвестная категория рыб.';
+          }
+          document.getElementById('fishContent').textContent = categoryContent;
+        }
+      
+        displayFishCategory(category);
+      
+        // Обработчик события для создания динамического эффекта при наведении на информационные блоки
+        let infoBlocks = document.querySelectorAll('.info_element');
+        infoBlocks.forEach(block => {
+          block.addEventListener('mouseover', function() {
+            block.style.backgroundColor = '#e6f7ff';
+          });
+          block.addEventListener('mouseout', function() {
+            block.style.backgroundColor = 'transparent';
+          });
+        });
+
+        function confirmRedirect(pageURL) {
+        if (confirm('Вы уверены, что хотите перейти на страницу ' + pageURL + '?')) {
+            window.location.href = pageURL;
+        }
+    }
+      </script>
+
+<header> 
+    <h1>Различные категории рыб тут: </h1> 
+</header> 
+
+<nav> 
+    <a href="fish.html">Рыбы</a> 
+</nav> 
+
+<footer> 
+    <p>&copy; 2024 Веб-сайт о природе. Все права защищены.</p> 
+</footer> 
+
+</body> 
+</html>

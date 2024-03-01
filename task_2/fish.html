@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Рыбы</title>
+<link rel="stylesheet" href="./styles.css"> 
+</head>
+<body>
+
+<header>
+    <h1>Различные категории рыб</h1>
+</header>
+
+<nav>
+    <a href="NeaturalMain.html">Главная</a>
+    <a href="fish.html?category=freshwater">Пресноводные виды</a>
+    <a href="fish.html?category=saltwater">Морские виды</a>
+</nav>
+
+<section>
+    <h2>Выбранная категория рыб</h2>
+    <p id="fishContent">Контент категории рыб будет отображен здесь.</p>
+</section>
+
+<footer>
+    <p>&copy; 2024 Все права защищены.</p>
+</footer>
+
+<script>
+  // Получаем параметры URL
+  const urlParams = new URLSearchParams(window.location.search);
+  const category = urlParams.get('category');
+
+  // Функция для отображения контента в зависимости от параметра URL
+  function displayFishCategory(category) {
+    let categoryContent = '';
+    if (category === 'freshwater') {
+      categoryContent = 'Здесь показаны пресноводные виды рыб. В России, с ее многочисленными реками, природными водоемами, развитой структурой прудового хозяйства водная фауна представлена богато. Пресноводная рыба во все времена была одним из главных пищевых ресурсов. Неспроста первые поселения строились именно возле водных артерий.';
+    } else if (category === 'saltwater') {
+      categoryContent = 'Здесь показаны морские виды рыб.Среда обитания таких рыб – соленые воды морей и океанов. Эта группа не менее разнообразна и многочисленна, чем пресноводные рыбы. Существует множество видов, отличающихся между собой различными параметрами. Следует подробнее остановиться на некоторых видах, с указанием официальных данных по их размерам.';
+    } else {
+      categoryContent = 'Неизвестная категория рыб. Выберите категорию.';
+    }
+    document.getElementById('fishContent').textContent = categoryContent;
+  }
+  displayFishCategory(category);
+</script>
+</body>
+</html>
