@@ -1,0 +1,140 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8"> 
+
+<script>
+
+//функция табулирования
+function f(a, nm1, nm2, x, y) {
+    let result;
+        if (x + y <= a) {
+            result = 0;
+            for (let n = 1; n <= nm1; n++) {
+                   result += Math.pow((x + y) / n, n);
+            }
+            } else {
+                result = 0;
+                for (let n = 0; n <= nm2; n++) {
+               result += Math.pow(Math.pow(y, n) / factorial(n), n);
+           }
+        }
+
+    return result;
+}
+
+function factorial(n) {
+    if (n === 0 || n === 1) {
+        return 1;
+    } else {
+        return n * factorial(n - 1);
+    }
+}
+
+
+//Функция определения числового значения
+function isNumeric(n) 
+{
+    return !isNaN(parseFloat(n)) && isFinite(n);
+}
+
+//табулирование функции от x0 до xn с шагом sx
+function tabFunc(x0, xn, y0, yn, a, nm1, nm2) 
+{
+    let maxVal = -Infinity;
+    let minVal = Infinity;
+    let maxX = null;
+    let maxY = null;
+    let result = 0;
+    //получаем ссылку на элемент div для вывода значений
+    var rez = document.getElementById("result");
+
+    //если значения параметров не числовые - выводим ошибку
+    if (!isNumeric(x0) || !isNumeric(xn) || !isNumeric(y0) || !isNumeric(yn) || !isNumeric(a) || !isNumeric(nm1) || !isNumeric(nm2)) 
+	{
+        rez.innerHTML = "Ошибка! Проверьте введёные значения<br>";
+        return;
+    }
+
+	if (isNaN(nm1) || nm1 < 2 || nm1 > 6 || isNaN(nm2) || nm2 < 2 || nm2 > 6){
+		rez.innerHTML = "Ошибка! Проверьте введёные значения nm1 и nm2<br>";
+        return;
+	}
+
+    //преобразуем параметры в числа с плавающей точкой
+    x0 = parseFloat(x0);
+    xn = parseFloat(xn);
+    y0 = parseFloat(y0);
+	yn = parseFloat(yn);
+
+    //проверим допустимость границ диапазона табулирования
+    if ((x0 > xn) || (x0 == xn) || (y0 > yn) || (y0 == yn))
+	{
+        rez.innerHTML = "Ошибка! C такими значениями нельзя табулировать функцию<br>";
+        return;
+    }
+
+    // очищаем содержание элемента div и выводим заголовок
+	// свойство innerHTML позволяет заменить содержимое элемента
+    rez.innerHTML = "Результаты табуляции от x = " + x0 + " y = " + y0 + " до x = " + xn + " y = " + yn + ":<br>";
+
+    //табулируем функцию и выводим значение в элемент div
+    var x, y;
+	var s = "<table width='600'>"; // накапливаем теги разметки в переменную s, чтобы не сломать вёрстку
+    for (x = x0; x0 < xn ? x < xn + 1: x > xn + 1; x += 1) 
+	{
+		for (y = y0; y0 < yn ? y < yn + 1: y > yn + 1; y += 1) 
+		{
+            result = f(a, nm1, nm2, x, y)
+
+            if (result > maxVal) {
+            maxVal = result;
+            maxX = x;
+            maxY = y;
+            }
+
+            if (result < minVal) {
+                minVal = result;
+            }
+
+			s += "<tr><td>" + x + "</td><td>" + y + "</td><td>" + result + "</td></tr>";
+    	}
+    }
+	s += "</table>";
+    console.log(s);
+	rez.innerHTML += s; // добавляем вёрстку в содержимое элемента
+    rez.innerHTML += "Максимум: " + maxVal + " Минимум: " + minVal + ":<br>";
+}
+
+			
+</script>
+</head>
+<body>
+	<!-- форма для ввода диапазона табулирования функции-->
+	<form>
+		Табулирование функции f(x, y)<br>
+		<br>
+		Введите начальное значение X:<br>
+		<input type="text" id="begX" value=""><br>
+		Введите конечное значение X:<br>
+		<input type="text" id="endX" value=""><br>
+		Введите начальное значение Y:<br>
+		<input type="text" id="begY" value=""><br>
+		Введите конечное значение Y:<br>
+		<input type="text" id="endY" value=""><br>
+		Введите значение A:<br>
+		<input type="text" id="numA" value=""><br>
+		Введите значение NM1:<br>
+		<input type="text" id="num1" value=""><br>
+		Введите значение NM2:<br>
+		<input type="text" id="num2" value=""><br>
+		<br>
+		<input type="button" id="button" value="Табулировать" 
+			onclick="tabFunc(form.begX.value, form.endX.value, form.begY.value, form.endY.value, form.numA.value, form.num1.value, form.num2.value)">
+	</form>
+	
+	<!--элемент div для вывода результатов табулирования-->
+	<div id="result">
+	</div>
+</body>
+</html>
