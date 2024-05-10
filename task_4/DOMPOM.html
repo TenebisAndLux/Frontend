@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dynamic Table Manipulation</title>
+<style>
+    table {
+        border-collapse: collapse;
+    }
+    td {
+        border: 1px solid black;
+        padding: 5px;
+        text-align: center;
+    }
+</style>
+</head>
+<body>
+    <label for="sizeInput">Enter table size (1-50):</label>
+    <input type="number" id="sizeInput" min="1" max="50">
+    <button onclick="createTable()">Create Table</button>
+    <br><br>
+    <div id="tableContainer"></div>
+    <br>
+    <label for="colorInput">Enter color for blue cells:</label>
+    <input type="text" id="colorInput">
+    <button onclick="changeColor()">Change Color</button>
+    <br><br>
+    <button onclick="calculateSum('row')">Calculate Row Sums</button>
+    <button onclick="calculateSum('column')">Calculate Column Sums</button>
+    <br><br>
+    <label for="thresholdInput">Enter threshold to delete rows:</label>
+    <input type="number" id="thresholdInput" min="1">
+    <button onclick="deleteRows()">Delete Rows</button>
+
+    <script>
+    function createTable() {
+    const size = document.getElementById("sizeInput").value; 
+    if (size < 1 || size > 50) { 
+        alert("Please enter a size between 1 and 50."); 
+        return; 
+    } 
+    const tableContainer = document.getElementById("tableContainer"); 
+    tableContainer.innerHTML = ""; 
+    const table = document.createElement("table"); 
+
+    for (let i = 1; i <= size; i++) { 
+        const row = document.createElement("tr"); 
+        for (let j = 1; j <= size; j++) { 
+            const cell = document.createElement("td"); 
+            if (i <= Math.ceil(size / 2) && j >= i && j <= size - i + 1) { 
+                if(j == size - i + 1|| j == i) cell.textContent = i; 
+                cell.style.backgroundColor = (j == size - i + 1|| j == i) ? "blue" : "red"; 
+            } else if (i > Math.ceil(size / 2) && j >= size - i + 1 && j <= i) { 
+                if(j == size - i + 1|| j == i) cell.textContent = i; 
+                cell.style.backgroundColor = (j == size - i + 1|| j == i) ? "blue" : "red"; 
+            }            
+            else { 
+                cell.textContent = ""; 
+            } 
+            row.appendChild(cell); 
+        } 
+        table.appendChild(row); 
+    } 
+
+    tableContainer.appendChild(table); 
+}
+
+
+
+        function changeColor() {
+            const color = document.getElementById("colorInput").value.toLowerCase();
+            const blueCells = document.querySelectorAll("td[style*='blue']");
+            blueCells.forEach(cell => cell.style.backgroundColor = color);
+        }
+
+        function calculateSum(type) {
+            const rows = document.querySelectorAll("tr");
+            rows.forEach(row => {
+                let sum = 0;
+                row.querySelectorAll("td").forEach(cell => {
+                    if (cell.style.backgroundColor === "blue") {
+                        sum += parseInt(cell.textContent);
+                    }
+                });
+                row.querySelectorAll("td[style*='blue']").forEach(cell => cell.textContent = sum);
+            });
+        }
+
+        function deleteRows() {
+            const threshold = document.getElementById("thresholdInput").value;
+            const rowsToDelete = [];
+            const rows = document.querySelectorAll("tr");
+            rows.forEach(row => {
+                let count = 0;
+                row.querySelectorAll("td[style*='blue'], td[style*='red']").forEach(cell => count++);
+                if (count > threshold) {
+                    rowsToDelete.push(row);
+                }
+            });
+            rowsToDelete.forEach(row => row.remove());
+        }
+    </script>
+</body>
+</html>

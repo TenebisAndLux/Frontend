@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Данные о сотрудниках</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="person_script.js"></script>
+</head>
+
+<body>
+    <button id="return-button">Вернуться</button>
+    <button id="save-button">Сохранить</button>
+    <button id="load-button">Загрузить</button>
+    <h1>Сотрудники</h1>
+    <button id="generate-employees-button">Сгенерировать случайный массив сотрудников</button>
+    <button id="sort-employees-button">Сортировать массив сотрудников по полю "name"</button>
+    <button id="search-employees-button">Поиск сотрудников</button>
+    <button id="remove-birthdate-if-experience-below-button">Удалить дату рождения у сотрудников со стажем
+        меньше</button>
+    <button id="add-location-info-button">Добавить информацию о местоположении</button>
+    <p id="intermediate-results" style="background-color: #F5DEB3; padding: 10px;"></p>
+    <script src="buttons_script.js"></script>
+    <table id="employees-list">
+        <caption>Сотрудники</caption>
+        <thead>
+            <tr>
+                <th>Имя</th>
+                <th>Фамилия</th>
+                <th>Должность</th>
+                <th>Организация</th>
+                <th>Стаж</th>
+                <th>Телефон</th>
+                <th>Дата рождения</th>
+                <th>Место жительства</th>
+            </tr>
+        </thead>
+        <tbody></tbody>
+    </table>
+    <script>
+        const employeesContainer = document.querySelector('#employees-list tbody');
+
+        function renderEmployees(employees) {
+            employeesContainer.innerHTML = '';
+
+            employees.forEach(employee => {
+                const listItem = document.createElement('tr');
+                listItem.innerHTML = `
+                    <td>${employee.name.firstName}</td>
+                    <td>${employee.name.lastName}</td>
+                    <td>${employee.job.position}</td>
+                    <td>${employee.job.organization}</td>
+                    <td>${employee.job.experience} лет</td>
+                    <td>${employee.phone_number}</td>
+                    <td>${employee.birthdate ? `${employee.birthdate.day}.${employee.birthdate.month}.${employee.birthdate.year}` : ''}</td>
+                    <td>${employee.location}</td>
+                `;
+                employeesContainer.appendChild(listItem);
+            });
+        }
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,52 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #CD7F32;
+    margin: 0;
+    padding: 0;
+}
+
+#employees-list {
+    max-width: 800px;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: #F5DEB3;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+div {
+    margin-bottom: 10px;
+    padding: 10px;
+    border: 1px solid #CD7F32;
+    border-radius: 5px;
+}
+
+div:nth-child(even) {
+    background-color: #E6DAC3;
+}
+
+div:nth-child(odd) {
+    background-color: #D7C9B3;
+}
+
+button {
+    background-color: #CD7F32;
+    border: 1px solid #F5DEB3;
+    border-radius: 50px;
+    color: white;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+}
+
+table {
+    border-collapse: collapse;
+}
+
+table, th, td {
+    border: 1px solid black;
+}

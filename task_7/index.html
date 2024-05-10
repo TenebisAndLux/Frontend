@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <title>Характеристики функций</title>
+</head>
+
+<body>
+    <h1>Характеристики функций</h1>
+
+    <label for="function">Выберите функцию:</label>
+    <select id="function">
+        <option value="f1">f1(x)</option>
+        <option value="f2">f2(x)</option>
+        <option value="f3">f3(x)</option>
+    </select>
+
+    <label for="functionVariant">Выберите вариант функции:</label>
+    <select id="functionVariant">
+        <option value="memoized">Мемоизированная</option>
+        <option value="debug">Отладочная</option>
+        <option value="counter">Счетчик вызовов</option>
+    </select>
+
+    <label for="range">Диапазон и шаг определения функции:</label>
+    <input type="number" id="rangeStart" placeholder="Начало диапазона">
+    <input type="number" id="rangeEnd" placeholder="Конец диапазона">
+    <input type="number" id="step" placeholder="Шаг">
+
+    <label for="characteristics">Выберите характеристики:</label>
+    <input type="checkbox" id="maximum" checked> Максимум
+    <input type="checkbox" id="negativeValues" checked> Количество отрицательных значений
+    <input type="checkbox" id="monotonicDecreasing" checked> Монотонно убывающая
+
+    <button onclick="calculateCharacteristics()">Рассчитать</button>
+
+    <div id="result">
+        <p id="maximumResult"></p>
+        <p id="negativeValuesResult"></p>
+        <p id="monotonicDecreasingResult"></p>
+        <p id="counterResult"></p>
+    </div>
+
+    <div id="debugResult" style="display: none;"></div>
+    <script src="logic_script.js"></script>
+</body>
