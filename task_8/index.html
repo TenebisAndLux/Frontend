@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fraction Class</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="header">
+        <header class="d-flex flex-wrap justify-content-between py-3 mb-4 border-bottom">
+          <a href="https://github.com/TenebisAndLux" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto link-body-emphasis text-decoration-none">
+            <img src="Calculator.png" alt="Fraction Class" width="60" height="60">
+          </a>
+
+          <ul class="nav nav-pills">
+            <li class="nav-item"><a  class="nav-link active" aria-current="page">Home</a></li>
+            <li class="nav-item"><a  class="nav-link">Features</a></li>
+            <li class="nav-item"><a  class="nav-link">Pricing</a></li>
+            <li class="nav-item"><a  class="nav-link">FAQs</a></li>
+            <li class="nav-item"><a  class="nav-link">About</a></li>
+          </ul>
+        </header>
+    </div>
+
+
+    <div class="container">
+        <h1>Fraction Class</h1>
+        <div>
+            <label for="numerator">Numerator:</label>
+            <input type="number" id="numerator">
+            <label for="denominator">Denominator:</label>
+            <input type="number" id="denominator">
+            <button onclick="createFraction()">Create Fraction</button>
+        </div>
+        <div class="output">
+            <h3>Output:</h3>
+            <p id="output"></p>
+        </div>
+    </div>
+    <div class="container">
+        <h2>Actions</h2>
+        <div>
+            <label for="fraction">Choose a fraction:</label>
+            <select id="fraction" onchange="updateFractionSelect2()"></select>
+            <button onclick="showNumerator()">Show Numerator</button>
+            <button onclick="showDenominator()">Show Denominator</button>
+        </div>
+        <div class="output">
+            <h3>Output:</h3>
+            <p id="output2"></p>
+        </div>
+    </div>
+    <div class="container">
+        <h2>Operations</h2>
+        <div>
+            <label for="fraction1">Choose a fraction:</label>
+            <select id="fraction1"></select>
+            <label for="operation">Choose an operation:</label>
+            <select id="operation">
+                <option value="add">+</option>
+                <option value="subtract">-</option>
+                <option value="multiply">×</option>
+                <option value="divide">÷</option>
+                <option value="assign">=</option>
+            </select>
+            <label for="fraction2">Choose a fraction:</label>
+            <select id="fraction2"></select>
+            <button onclick="performOperation()">Perform Operation</button>
+        </div>
+        <div class="output">
+            <h3>Output:</h3>
+            <p id="output3"></p>
+        </div>
+    </div>
+
+    <script src="logic_script.js"></script>
+</body>
+</html>
+
+

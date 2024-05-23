@@ -1,0 +1,154 @@
+body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    font-family: 'Lobster', cursive;
+    background-image: url('https://cdn.pixabay.com/photo/2017/06/19/14/18/beautiful-2427360_1280.jpg');
+    background-size: cover;
+    background-position: center;
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 80%;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: rgba(255, 255, 255, 0.8);
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+    backdrop-filter: blur(10px);
+    animation: fadeIn 1s ease-in-out;
+    transform: scale(0.8);
+    opacity: 0;
+    animation-delay: 0.1s;
+    transition: all 0.3s ease-in-out;
+}
+
+.container:hover {
+    transform: scale(1);
+    opacity: 1;
+}
+
+.container:not(:hover) {
+    opacity: 1;
+}
+
+div {
+    margin-bottom: 10px;
+    padding: 10px;
+    border: 1px solid #CD7F32;
+    border-radius: 5px;
+    animation: fadeIn 0.5s ease-in-out;
+    animation-delay: 0.1s;
+    transition: all 0.3s ease-in-out;
+}
+
+div:nth-child(even) {
+    background-color: hsla(39, 41%, 83%, 0.5);
+}
+
+div:nth-child(odd) {
+    background-color: #D7C9B3;
+}
+
+button {
+    background-color: #CD7F32;
+    border: 1px solid #F5DEB3;
+    border-radius: 50px;
+    color: white;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+}
+
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+        transform: scale(0.8);
+    }
+    100% {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+table {
+    border-collapse: collapse;
+}
+
+table, th, td {
+    border: 1px solid black;
+    padding: 10px;
+}
+
+
+.header {
+    background-color: #CD7F32;
+    color: white;
+    text-align: center;
+    padding: 10px 0;
+    width: 100%;
+    position: fixed;
+    top: 0;
+    z-index: 999;
+}
+
+.header header {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+}
+
+.header header a {
+    text-decoration: none;
+    color: white;
+}
+
+.header header a svg {
+    width: 40px;
+    height: 32px;
+    margin-right: 10px;
+}
+
+.header header a span {
+    font-size: 20px;
+}
+
+.header header ul {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    list-style: none;
+}
+
+.header header ul li {
+    margin: 0 10px;
+}
+
+.header header ul li a {
+    text-decoration: none;
+    color: white;
+    font-size: 16px;
+}
+
+.header header ul li a:hover {
+    font-weight: bold;
+}
+
+body {
+    padding-top: 60px;
+}
+
